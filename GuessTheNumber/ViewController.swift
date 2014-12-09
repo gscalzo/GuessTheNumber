@@ -9,7 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var rangeLbl: UILabel!
+    @IBOutlet weak var numberTxtField: UITextField!
+    @IBOutlet weak var messageLbl: UILabel!
+    @IBOutlet weak var numGuessesLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +24,8 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func onOkPressed(sender: AnyObject) {
+    }
 
 }
 

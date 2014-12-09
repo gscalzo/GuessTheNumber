@@ -49,6 +49,9 @@
                                 <rect key="frame" x="153" y="187" width="68" height="57"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="OK"/>
+                                <connections>
+                                    <action selector="onOkPressed:" destination="vXZ-lx-hvc" eventType="touchDragOutside" id="TU6-xs-c1G"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of guesses: X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kB-kK-yX7">
                                 <rect key="frame" x="16" y="301" width="343" height="21"/>
@@ -60,6 +63,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="messageLbl" destination="jYz-ME-lmw" id="UWc-0W-oMm"/>
+                        <outlet property="numGuessesLbl" destination="5kB-kK-yX7" id="zLV-Q1-ZZK"/>
+                        <outlet property="numberTxtField" destination="DiN-LE-8PY" id="hGK-ze-13Q"/>
+                        <outlet property="rangeLbl" destination="Cwm-h5-wrb" id="Ef9-vV-EoA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
