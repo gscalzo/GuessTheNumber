@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        numberTxtField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +26,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onOkPressed(sender: AnyObject) {
+        let number = numberTxtField.text.toInt()
+        if let number = number {
+            println("OK")
+        } else {
+            var alert = UIAlertController(title: nil, message: "Enter a number", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)        }
     }
 
 }
