@@ -24,12 +24,12 @@ class ViewController: UIViewController {
         numberTxtField.becomeFirstResponder()
         reset()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBAction func onOkPressed(sender: AnyObject) {
         let number = numberTxtField.text.toInt()
         if let number = number {
@@ -40,9 +40,20 @@ class ViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil)
         }
     }
-    
-    private func selectectNumber(number: Int){
-        if number == secretNumber {
+}
+
+
+private extension ViewController{
+    enum Comparison{
+        case Smaller
+        case Greater
+        case Equals
+    }
+
+    func selectectNumber(number: Int){
+        
+        switch compareNumber(number, otherNumber: secretNumber){
+        case .Equals:
             var alert = UIAlertController(title: nil, message: "You won in \(numGuesses) guesses!",
                 preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { cmd in
@@ -50,45 +61,60 @@ class ViewController: UIViewController {
                 self.numberTxtField.text = ""
             }))
             self.presentViewController(alert, animated: true, completion: nil)
-            return
-        } else if number < secretNumber {
+        case .Smaller:
             lowerBound = max(lowerBound, number)
             messageLbl.text = "Your last guess was too low"
-        } else if number > secretNumber {
+            numberTxtField.text = ""
+            numGuesses++
+            renderRange()
+            renderNumGuesses()
+        case .Greater:
             upperBound = min(upperBound, number)
             messageLbl.text = "Your last guess was too high"
+            numberTxtField.text = ""
+            numGuesses++
+            renderRange()
+            renderNumGuesses()
         }
-        numberTxtField.text = ""
-        numGuesses++
-        renderRange()
-        renderNumGuesses()
     }
     
-    private func extractSecretNumber() {
+    func compareNumber(number: Int, otherNumber: Int) -> Comparison{
+        if number < otherNumber {
+            return .Smaller
+        } else if number > otherNumber {
+            return .Greater
+        }
+        
+        return .Equals
+    }
+}
+
+private extension ViewController{
+    func extractSecretNumber() {
         let diff = upperBound - lowerBound
         let randomNumber = Int(arc4random_uniform(UInt32(diff)))
-       secretNumber = randomNumber + Int(lowerBound)
+        secretNumber = randomNumber + Int(lowerBound)
     }
-
-    private func renderRange() {
+    
+    func renderRange() {
         rangeLbl.text = "\(lowerBound) and \(upperBound)"
     }
-
-    private func renderNumGuesses() {
+    
+    func renderNumGuesses() {
         numGuessesLbl.text = "Number of Guesses: \(numGuesses)"
     }
-
-    private func resetData() {
+    
+    func resetData() {
         lowerBound = 0
         upperBound = 100
         numGuesses = 0
     }
-
-    private func resetMsg() {
+    
+    func resetMsg() {
         messageLbl.text = ""
     }
-
-    private func reset(){
+    
+    func reset(){
         resetData()
         renderRange()
         renderNumGuesses()
