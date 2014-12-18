@@ -29,11 +29,11 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func onOkPressed(sender: AnyObject) {
         let number = numberTxtField.text.toInt()
         if let number = number {
-            selectectNumber(number)
+            selectedNumber(number)
         } else {
             var alert = UIAlertController(title: nil, message: "Enter a number", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
@@ -50,8 +50,8 @@ private extension ViewController{
         case Equals
     }
 
-    func selectectNumber(number: Int){
-        
+    func selectedNumber(number: Int){
+        //....
         switch compareNumber(number, otherNumber: secretNumber){
         case .Equals:
             var alert = UIAlertController(title: nil, message: "You won in \(numGuesses) guesses!",
@@ -68,14 +68,7 @@ private extension ViewController{
             numGuesses++
             renderRange()
             renderNumGuesses()
-        case .Greater:
-            upperBound = min(upperBound, number)
-            messageLbl.text = "Your last guess was too high"
-            numberTxtField.text = ""
-            numGuesses++
-            renderRange()
-            renderNumGuesses()
-        }
+
     }
     
     func compareNumber(number: Int, otherNumber: Int) -> Comparison{

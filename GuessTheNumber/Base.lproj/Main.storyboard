@@ -50,7 +50,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="OK"/>
                                 <connections>
-                                    <action selector="onOkPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9f6-tf-uPW"/>
+                                    <action selector="onOkPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BT7-Cw-Rgt"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of guesses: X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kB-kK-yX7">
