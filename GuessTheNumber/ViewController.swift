@@ -68,7 +68,14 @@ private extension ViewController{
             numGuesses++
             renderRange()
             renderNumGuesses()
-
+        case .Greater:
+            upperBound = min(upperBound, number)
+            messageLbl.text = "Your last guess was too high"
+            numberTxtField.text = ""
+            numGuesses++
+            renderRange()
+            renderNumGuesses()
+        }
     }
     
     func compareNumber(number: Int, otherNumber: Int) -> Comparison{
